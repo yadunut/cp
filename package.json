@@ -1,0 +1,10 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Yadunand Prem <yadunut@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "rome": "^10.0.1"
+  }
+}
