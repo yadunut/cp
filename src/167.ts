@@ -3,13 +3,13 @@ function twoSum(numbers: number[], target: number): number[] {
 	let rightIndex = numbers.length - 1;
 	// i can infinitely loop as the test assures I have result
 	while (leftIndex !== rightIndex) {
-		const result = target - (numbers[leftIndex] + numbers[rightIndex]);
-		if (result === 0) {
-			return [leftIndex + 1, rightIndex + 1];
-		} else if (result < 0) {
+		const sum = numbers[leftIndex] + numbers[rightIndex];
+		if (sum < target) {
+			leftIndex += 1;
+		} else if (sum > target) {
 			rightIndex -= 1;
 		} else {
-			leftIndex += 1;
+			return [leftIndex + 1, rightIndex + 1];
 		}
 	}
 	return [-1, -1];
