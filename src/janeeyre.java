@@ -1,5 +1,4 @@
-import java.util.PriorityQueue;
-import java.util.Scanner;
+import java.util.*;
 
 class Book implements Comparable<Book> {
     String name;
@@ -47,7 +46,7 @@ class Pair implements Comparable<Pair> {
 
     @Override
     public int compareTo(Pair o) {
-        return Integer.compare(this.time, o.time);
+        return Integer.compare(o.time, this.time);
     }
 }
 
@@ -56,7 +55,7 @@ public class janeeyre {
         Scanner sc = new Scanner(System.in);
 
         PriorityQueue<Book> pile = new PriorityQueue<>();
-        PriorityQueue<Pair> future = new PriorityQueue<>();
+        Stack<Pair> future = new Stack<>();
         int initialBooks = sc.nextInt(), additionalBooks = sc.nextInt();
         Book janeEyre = new Book("Jane Eyre", sc.nextInt());
         sc.nextLine();
@@ -74,9 +73,10 @@ public class janeeyre {
             if (line[1].compareTo("Jane Eyre") > 0) continue;
             future.add(new Pair(Integer.parseInt(line[0].strip()), line[1], Integer.parseInt(line[2].strip())));
         }
+        Collections.sort(future);
 
         Book current = null;
-        int minutesTaken = 0;
+        long minutesTaken = 0;
 
         while (current == null || !current.equals(janeEyre)) {
 
@@ -85,11 +85,8 @@ public class janeeyre {
             minutesTaken += current.pages;
             // if new books came while she was reading the current book, add to the pile
             // so check if the current time is more than the time that the new books came in
-            Pair fBook = future.peek();
-            while (fBook != null && minutesTaken >= fBook.time) {
-//                System.out.printf("time: %d, book in time: %d, book: %s\n", minutesTaken, fBook.time, fBook.b);
-                pile.add(future.poll().b);
-                fBook = future.peek();
+            while (!future.empty() && minutesTaken >= future.peek().time) {
+                pile.add(future.pop().b);
             }
         }
         System.out.println(minutesTaken);

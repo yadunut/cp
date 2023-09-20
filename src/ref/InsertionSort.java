@@ -1,12 +1,6 @@
 package ref;
 
 public class InsertionSort {
-    private static void swap(int[] arr, int a, int b) {
-        int tmp = arr[a];
-        arr[a] = arr[b];
-        arr[b] = tmp;
-    }
-
     static void sort(int[] arr) {
         // iterate through each element in the array
         for (int i = 1; i < arr.length; i++) {
