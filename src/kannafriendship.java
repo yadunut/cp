@@ -24,17 +24,32 @@ public class kannafriendship {
 
         @Override
         public String toString() {
-            return "I{" +
-                    "start=" + start +
-                    ", end=" + end +
-                    '}';
+            return "I{" + "s=" + start + ", e=" + end + '}';
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Interval interval = (Interval) o;
+
+            if (start != interval.start) return false;
+            return end == interval.end;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = start;
+            result = 31 * result + end;
+            return result;
         }
     }
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] tokens = br.readLine().split(" ");
-        List<Interval> list = new ArrayList<>();
+        TreeSet<Interval> set = new TreeSet<>();
         int total = 0;
         int N = Integer.parseInt(tokens[0]);
         int Q = Integer.parseInt(tokens[1]);
@@ -42,35 +57,35 @@ public class kannafriendship {
             tokens = br.readLine().split(" ");
             if (tokens[0].equals("1")) {
                 Interval interval = new Interval(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));
-                if (list.size() == 0) {
-                    list.add(interval);
+                if (set.size() == 0) {
+                    set.add(interval);
                     total += interval.numTracks();
                     continue;
                 }
-                // iterate through every single interval and try to see if valid insertion point
                 boolean append = true;
-                for (int i = 0; i < list.size(); i++) {
-                    Interval curr = list.get(i);
-                    // new interval.end < current interval.start
+                TreeSet<Interval> tailSet;
+                // all these operations are bad. What if i keep a remove collection
+                if (set.floor(interval) == null) {
+                    tailSet = new TreeSet<>(set);
+                } else {
+                    tailSet = new TreeSet<>(set.tailSet(set.floor(interval), true));
+                }
+                for (Interval curr : tailSet) {
                     if (interval.end < curr.start) {
-                        list.add(i, interval);
+                        set.add(interval);
                         total += interval.numTracks();
                         append = false;
                         break;
                     }
-                    // new interval.start > current interval end
-                    else if (interval.start > curr.end) continue;
-                    else {
-                        // within range
+                    if (interval.start <= curr.end) {
                         interval.start = Math.min(interval.start, curr.start);
                         interval.end = Math.max(interval.end, curr.end);
-                        list.remove(i);
+                        set.remove(curr);
                         total -= curr.numTracks();
-                        i--;
                     }
                 }
                 if (append) {
-                    list.add(interval);
+                    set.add(interval);
                     total += interval.numTracks();
                 }
 //                System.out.println(list);
