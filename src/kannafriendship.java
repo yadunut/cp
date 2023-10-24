@@ -47,31 +47,35 @@ public class kannafriendship {
                     total += interval.numTracks();
                     continue;
                 }
-                List<Interval> result = new ArrayList<>();
                 // iterate through every single interval and try to see if valid insertion point
                 boolean append = true;
                 for (int i = 0; i < list.size(); i++) {
                     Interval curr = list.get(i);
                     // new interval.end < current interval.start
                     if (interval.end < curr.start) {
-                        result.add(interval);
-                        result.addAll(list.subList(i, list.size()));
+                        list.add(i, interval);
+                        total += interval.numTracks();
                         append = false;
                         break;
                     }
                     // new interval.start > current interval end
-                    else if (interval.start > curr.end) result.add(curr);
+                    else if (interval.start > curr.end) continue;
                     else {
                         // within range
                         interval.start = Math.min(interval.start, curr.start);
                         interval.end = Math.max(interval.end, curr.end);
+                        list.remove(i);
+                        total -= curr.numTracks();
+                        i--;
                     }
                 }
-                if (append) result.add(interval);
-                list = result;
+                if (append) {
+                    list.add(interval);
+                    total += interval.numTracks();
+                }
 //                System.out.println(list);
             } else {
-                System.out.println((Integer) list.stream().mapToInt(Interval::numTracks).sum());
+                System.out.println(total);
             }
         }
     }
