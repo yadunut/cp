@@ -2,24 +2,36 @@ package leetcode;
 
 import java.util.Stack;
 
+// Evaluate Reverse Polish Notation
 public class L150 {
     public int evalRPN(String[] tokens) {
         Stack<Integer> s = new Stack<>();
         for (String t : tokens) {
             switch (t) {
-                case "+" -> s.push(s.pop() + s.pop());
-                case "-" -> {
+                case "+": {
+                    s.push(s.pop() + s.pop());
+                    break;
+                }
+                case "-": {
                     int a = s.pop();
                     int b = s.pop();
                     s.push(b - a);
+                    break;
                 }
-                case "*" -> s.push(s.pop() * s.pop());
-                case "/" -> {
+                case "*": {
+                    s.push(s.pop() * s.pop());
+                    break;
+                }
+                case "/": {
                     int a = s.pop();
                     int b = s.pop();
                     s.push(b / a);
+                    break;
                 }
-                default -> s.push(Integer.parseInt(t));
+                default: {
+                    s.push(Integer.parseInt(t));
+                    break;
+                }
             }
         }
         return s.pop();

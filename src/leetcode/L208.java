@@ -1,5 +1,6 @@
 package leetcode;
 
+// Implement Trie (Prefix Tree)
 public class L208 {
     class Trie {
         Node root;

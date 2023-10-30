@@ -1,5 +1,6 @@
 package leetcode;
 
+// Ransom Note
 public class L383 {
     public static boolean canConstruct(String ransomNote, String magazine) {
         int[] rDist = new int[26];

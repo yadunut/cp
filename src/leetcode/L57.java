@@ -2,11 +2,11 @@ package leetcode;
 
 import java.util.*;
 
+// Insert Interval
 public class L57 {
     public int[][] insert(int[][] intervals, int[] newInterval) {
         ArrayList<int[]> result = new ArrayList<>();
 
-        // if new interval is before the itervals
         for (int i = 0; i < intervals.length; i++) {
             if (newInterval[1] < intervals[i][0]) {
                 result.add(newInterval);
@@ -25,8 +25,8 @@ public class L57 {
     public static void main(String[] args) {
         L57 s = new L57();
         int[][] result = s.insert(new int[][]{
-                        new int[]{1, 3},
-                        new int[]{6, 9}
+                        {1, 3},
+                        {6, 9}
                 }, new int[]{2, 5}
         );
         for (int[] ints : result) {

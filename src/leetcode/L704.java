@@ -1,5 +1,6 @@
 package leetcode;
 
+// Binary Search
 public class L704 {
     public static int search(int[] nums, int target) {
         int left = 0, right = nums.length-1;

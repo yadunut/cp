@@ -1,5 +1,6 @@
 package leetcode;
 
+// Middle of the Linked List
 public class L876 {
     public ListNode middleNode(ListNode head) {
         ListNode curr = head;

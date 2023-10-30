@@ -2,6 +2,7 @@ package leetcode;
 
 import java.util.HashSet;
 
+// Linked List Cycle
 public class L141 {
     public boolean hasCycle(ListNode head) {
         HashSet<ListNode> set = new HashSet<>();

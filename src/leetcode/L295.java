@@ -4,6 +4,7 @@ package leetcode;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
+// Find Median from Data Stream
 public class L295 {
     static class MedianFinder {
         PriorityQueue<Integer> front;

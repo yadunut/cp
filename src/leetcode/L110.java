@@ -1,5 +1,6 @@
 package leetcode;
 
+// Balanced Binary Tree
 public class L110 {
     public static boolean isBalanced(TreeNode root) {
         return height(root) != -1;

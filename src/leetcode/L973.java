@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
+// K Closest Points to Origin
 public class L973 {
 
     static double dist(int a, int b) {

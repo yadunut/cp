@@ -1,5 +1,6 @@
 package leetcode;
 
+// Lowest Common Ancestor of a Binary Search Tree
 public class L235 {
     public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (p.val > root.val && q.val > root.val) return lowestCommonAncestor(root.right, p, q);

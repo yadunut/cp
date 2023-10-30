@@ -1,5 +1,6 @@
 package leetcode;
 
+// Add Binary
 public class L67 {
     public static String addBinary(String a, String b) {
         a = new StringBuilder(a).reverse().toString();

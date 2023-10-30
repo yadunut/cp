@@ -1,6 +1,7 @@
 package leetcode;
 
 public class L104 {
+    // Maximum Depth of Binary Tree
     public int maxDepth(TreeNode root) {
         return 1 + dfs(root);
     }

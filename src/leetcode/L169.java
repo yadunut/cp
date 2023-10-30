@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+// Majority Element
 public class L169 {
     public static int majorityElement(int[] nums) {
         HashMap<Integer, Integer> map = new HashMap<>();

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 
+// Contains Duplicate
 public class L217 {
     public boolean containsDuplicateSlow(int[] nums) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
