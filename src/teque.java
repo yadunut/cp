@@ -23,6 +23,7 @@ public class teque {
                         pr.println(back.get(idx));
                     } else {
                         long idx = res + frontF + 1;
+//                        pr.printf("front at idx: %d\n", idx);
                         pr.println(front.get(idx));
                     }
                     break;
@@ -41,14 +42,17 @@ public class teque {
                 }
             }
             // handle balancing
-            if (front.size() - back.size() > 1) {
+            if (front.size() > back.size() + 1) {
+//                pr.printf("sending to back: \n");
                 // while front is bigger than back by 1
                 back.put(backF--, front.remove(--frontB));
             }
-            if (back.size() - front.size() > 1) {
-                // while front is bigger than back by 1
-                front.put(frontB++, back.remove(--backF));
+            if (back.size() > front.size()) {
+//                pr.printf("sending to front: \n");
+                front.put(frontB++, back.remove(++backF));
             }
+//            pr.printf("front: %s \n", front);
+//            pr.printf("back: %s \n", back);
         }
         pr.flush();
         pr.close();

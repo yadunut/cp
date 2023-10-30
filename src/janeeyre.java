@@ -1,56 +1,57 @@
 import java.util.*;
 
-class Book implements Comparable<Book> {
-    String name;
-    int pages;
 
-    Book(String name, int pages) {
-        this.name = name;
-        this.pages = pages;
-    }
-
-    @Override
-    public int compareTo(Book o) {
-        return this.name.compareTo(o.name);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Book book = (Book) o;
-
-        return name.equals(book.name);
-    }
-
-    @Override
-    public String toString() {
-        return name + "(" + pages + ")";
-    }
-}
-
-class Pair implements Comparable<Pair> {
-    int time;
-    Book b;
-
-    public Pair(int time, String name, int pages) {
-        this.time = time;
-        this.b = new Book(name, pages);
-    }
-
-    @Override
-    public String toString() {
-        return b.toString();
-    }
-
-    @Override
-    public int compareTo(Pair o) {
-        return Integer.compare(o.time, this.time);
-    }
-}
 
 public class janeeyre {
+    static class Book implements Comparable<Book> {
+        String name;
+        int pages;
+
+        Book(String name, int pages) {
+            this.name = name;
+            this.pages = pages;
+        }
+
+        @Override
+        public int compareTo(Book o) {
+            return this.name.compareTo(o.name);
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Book book = (Book) o;
+
+            return name.equals(book.name);
+        }
+
+        @Override
+        public String toString() {
+            return name + "(" + pages + ")";
+        }
+    }
+
+    static class Pair implements Comparable<Pair> {
+        int time;
+        Book b;
+
+        public Pair(int time, String name, int pages) {
+            this.time = time;
+            this.b = new Book(name, pages);
+        }
+
+        @Override
+        public String toString() {
+            return b.toString();
+        }
+
+        @Override
+        public int compareTo(Pair o) {
+            return Integer.compare(o.time, this.time);
+        }
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
