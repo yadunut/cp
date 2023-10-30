@@ -22,6 +22,8 @@ class Solution extends VersionControl {
     }
 }
 
+// First Bad Version
+
 public class L278 {
     public static void main(String[] args) {
         Solution s = new Solution();
