@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 public class internationaldates {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        List<Integer> result = Arrays.stream(sc.nextLine().split("/")).map(Integer::new).collect(Collectors.toList());
+        List<Integer> result = Arrays.stream(sc.nextLine().split("/")).map(Integer::parseInt).collect(Collectors.toList());
         if (result.get(0) > 12) {
             System.out.println("EU");
         }

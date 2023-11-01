@@ -80,24 +80,14 @@ public class nicknames {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter pr = new PrintWriter(System.out);
         int A = Integer.parseInt(br.readLine());
-//        Trie t = new Trie();
-//        for(int i = 0; i < A; i++) {
-//            t.insert(br.readLine());
-//        }
-//        int B = Integer.parseInt(br.readLine());
-//        for(int i = 0; i < B; i++) {
-//            System.out.println(t.prefix(br.readLine()));
-//        }
-        HashMap<String, Integer> freq = new HashMap<>();
-        for (int i = 0; i < A; i++) {
-            String name = br.readLine();
-            for(int j = 0; j < name.length(); j++) {
-                freq.compute(name.substring(0, j), (s, f) -> f == null ? 1 : f + 1);
-            }
-        }
-        for(int i = 0; i < A; i++) {
-            pr.println(freq.getOrDefault(br.readLine(), 0));
-        }
-        pr.close();
+       Trie t = new Trie();
+       for(int i = 0; i < A; i++) {
+           t.insert(br.readLine());
+       }
+       int B = Integer.parseInt(br.readLine());
+       for(int i = 0; i < B; i++) {
+           System.out.println(t.prefix(br.readLine()));
+       }
+       pr.close();
     }
 }

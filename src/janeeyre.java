@@ -1,7 +1,5 @@
 import java.util.*;
 
-
-
 public class janeeyre {
     static class Book implements Comparable<Book> {
         String name;
