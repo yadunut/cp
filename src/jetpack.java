@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.util.*;
 
 public class jetpack {
-
     static char[][] lines;
     static int cols;
     static int rows = 10;
@@ -105,7 +104,11 @@ public class jetpack {
 
         @Override
         public String toString() {
-            return "Coord{" + "x=" + col + ", y=" + row + ", move=" + move + '}';
+            return "Coord{" +
+                    "col=" + col +
+                    ", row=" + row +
+                    ", move=" + move +
+                    '}';
         }
 
         @Override
