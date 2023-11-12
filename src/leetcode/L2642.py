@@ -15,14 +15,14 @@ class Graph:
 	def shortestPath(self, node1: int, node2: int) -> int:
 		dist = [INF for _ in self.AL]
 		dist[node1] = 0
-		pq = [(d[1], d[0]) for d in enumerate(dist)]
+		pq = [(d, i) for i, d in enumerate(dist)]
 		heapify(pq)
 		while pq:
-			d, u = heappop(pq)
-			for v, w in self.AL[u]:
-				if dist[u]+w >= dist[v]: continue
-				dist[v] = dist[u]+w
-				heappush(pq, (dist[v], v))
+			curr_dist, curr_node = heappop(pq)
+			for neighbour, cost in self.AL[curr_node]:
+				if curr_dist+cost >= dist[neighbour]: continue
+				dist[neighbour] = curr_dist+cost
+				heappush(pq, (dist[neighbour], neighbour))
 		return dist[node2] if dist[node2] != INF else -1
 
 
